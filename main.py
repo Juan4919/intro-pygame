@@ -10,17 +10,9 @@ pg.display.set_caption( "Intro Pygame" )#agregar un titulo a mi ventana
 game_over = True
 
 rectangulo1 = Rectangulo(0,300,(185, 36, 183))
-
-rectangulo2 = Rectangulo(0,350)
-
-
+rectangulo2 = Rectangulo(0,350,vx=2,vy=2)
 rectangulo3 = Rectangulo(0,360,(52, 185, 36))
 
-rectangulo1.velocidad(1,1)
-
-rectangulo2.velocidad(2,2)
-
-rectangulo3.velocidad(2,2)
 
 while game_over:
 
@@ -35,11 +27,9 @@ while game_over:
     rectangulo2.mover()
     rectangulo3.mover()  
 
-    #y= y-1 
-    #la pantalla o sourface, color rgb, posiciones(posicionX, posicionY,tamañoX,tamañoY)
-    pg.draw.rect( pantalla,rectangulo1.color, (rectangulo1.pos_x,rectangulo1.pos_y,rectangulo1.w,rectangulo1.h) )#dibujando el rectangulo
-    pg.draw.rect( pantalla,rectangulo2.color, (rectangulo2.pos_x,rectangulo2.pos_y,rectangulo2.w,rectangulo2.h)  )
-    pg.draw.rect( pantalla,rectangulo3.color, (rectangulo3.pos_x,rectangulo3.pos_y,rectangulo3.w,rectangulo3.h)  )
+    rectangulo1.dibujar(pantalla)
+    rectangulo2.dibujar(pantalla)
+    rectangulo3.dibujar(pantalla)
 
     pg.display.flip()#funcion para cargar toda la configuracion que va dentro de la pantalla
 

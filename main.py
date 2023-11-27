@@ -1,23 +1,27 @@
 import pygame as pg
+from figura_class import Rectangulo
 
 #inicializar todos los modulos de pygame, pantallas, objetos, sonidos,teclado,etc
 pg.init()
-
-
 #crear la pantalla o sourface
 pantalla = pg.display.set_mode( (800,600) )#definicion de tamaño de pantalla
 pg.display.set_caption( "Intro Pygame" )#agregar un titulo a mi ventana
 
 game_over = True
-x=0
-y=300
-vx=1
-vy=1
 
-x2=0
-y2=500
-vx2=1
-vy2=1
+rectangulo1 = Rectangulo(0,300,(185, 36, 183))
+
+rectangulo2 = Rectangulo(0,350)
+
+
+rectangulo3 = Rectangulo(0,360,(52, 185, 36))
+
+rectangulo1.velocidad(1,1)
+
+rectangulo2.velocidad(2,2)
+
+rectangulo3.velocidad(2,2)
+
 while game_over:
 
     for eventos in pg.event.get():#capturo todos los eventos mientras se ejecuta el bucle
@@ -26,28 +30,16 @@ while game_over:
             game_over = False
 
     pantalla.fill( ( 24, 238, 238) )#asignar un color a la pantalla
-    x= x+vx 
-    y = y+vy
 
-    x2= x2+vx2 
-    y2 = y2+vy2
-
-    if x == 800 or x==0:
-        vx = vx*-1
-
-    if y == 600 or y ==0:
-        vy = vy*-1
-
-    if x2 == 800 or x2==0:
-        vx2 = vx2*-1
-
-    if y2 == 600 or y2 ==0:
-        vy2 = vy2*-1    
+    rectangulo1.mover()
+    rectangulo2.mover()
+    rectangulo3.mover()  
 
     #y= y-1 
     #la pantalla o sourface, color rgb, posiciones(posicionX, posicionY,tamañoX,tamañoY)
-    pg.draw.rect( pantalla,( 240, 65, 14 ), (x,y,20,20)   )#dibujando el rectangulo
-    pg.draw.rect( pantalla,( 185, 90, 36 ), (x2,y2,20,20)   )
+    pg.draw.rect( pantalla,rectangulo1.color, (rectangulo1.pos_x,rectangulo1.pos_y,rectangulo1.w,rectangulo1.h) )#dibujando el rectangulo
+    pg.draw.rect( pantalla,rectangulo2.color, (rectangulo2.pos_x,rectangulo2.pos_y,rectangulo2.w,rectangulo2.h)  )
+    pg.draw.rect( pantalla,rectangulo3.color, (rectangulo3.pos_x,rectangulo3.pos_y,rectangulo3.w,rectangulo3.h)  )
 
     pg.display.flip()#funcion para cargar toda la configuracion que va dentro de la pantalla
 

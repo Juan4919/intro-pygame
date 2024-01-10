@@ -5,7 +5,9 @@ import random as ra
 #inicializar todos los modulos de pygame, pantallas, objetos, sonidos,teclado,etc
 pg.init()
 #crear la pantalla o sourface
-pantalla = pg.display.set_mode( (800,600) )#definicion de tamaño de pantalla
+X_MAX = 1000
+Y_MAX = 800
+pantalla = pg.display.set_mode( (X_MAX,Y_MAX) )#definicion de tamaño de pantalla
 pg.display.set_caption( "Intro Pygame" )#agregar un titulo a mi ventana
 
 game_over = True
@@ -28,7 +30,7 @@ while game_over:
     pantalla.fill( ( 24, 238, 238) )#asignar un color a la pantalla
 
     for circulos in lista_circulos:
-        circulos.mover()
+        circulos.mover(xmax=X_MAX,ymax=Y_MAX)
         circulos.dibujarCirculo(pantalla)
 
     for rectangulos in lista_rectangulos:
